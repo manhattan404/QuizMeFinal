@@ -12,16 +12,17 @@
 
 # UPDATE TRIAL
 
-from directory import CreateNewTopic
+#from directory import CreateNewTopic
 import json
 import random
 from colorama import Fore, Back, Style
 import os
+from main import main_menu
+from menu import mainMenu
 
 #Maybe open the json file then close it back?
 
 question_dictionary = {}
-
 
 # Need to be able to save new json file based on created topic by user
 # Ability to edit title of created topic just in case user put wrong title 
@@ -35,9 +36,7 @@ def save_the_info():
 
 ## def display_topics():
 
-
 def store_questions_answers():
-
     
     prompt = Fore.YELLOW + "*****You will be asked to enter a question and an answer to be saved in the file*****" + Style.RESET_ALL
     prompt += Fore.YELLOW + "\n*****Type 'quit' to stop program*****" + Style.RESET_ALL
@@ -92,25 +91,8 @@ def enter_user_name():
     capitalized_name = user_name.title()
     welcome_message = "Welcome {}!".format(capitalized_name)
     print(welcome_message)
-
-#def choose_create_topic():
-    #print(" ")
-
-
-def main_menu():
-
-    print("+----------------------------------------------+")
-    print("|                  Reviewer                    |")
-    print("+----------------------------------------------+")
-    print("|           Please select an option            |")
-    print("|                                              |")
-    print("|      [A] Store questions and answers         |")
-    print("|      [B] Edit questions and answers          |")
-    print("|      [C] Take the quiz                       |")
-    print("|      [D] See scores and progress             |")
-    print("|      [E] Quit                                |")
-    print("|                                              |")
-    print("+----------------------------------------------|")
+    
+def mainChoice():
 
     choice = input("Choose a letter: ")
     if choice == "A":
@@ -129,6 +111,6 @@ def main_menu():
 
 ## Need to loop through main menu
 
-main_menu()
+mainMenu()
 play_again()
 
