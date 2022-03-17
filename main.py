@@ -15,10 +15,10 @@
 #from directory import CreateNewTopic
 import json
 import random
+from re import A
 from colorama import Fore, Back, Style
 import os
-from main import main_menu
-from menu import mainMenu
+from menu import Menu, mainMenu
 from question_model import Question
 
 #Maybe open the json file then close it back?
@@ -112,6 +112,6 @@ def mainChoice():
 
 ## Need to loop through main menu
 
-mainMenu()
+Menu(A)
 play_again()
 
