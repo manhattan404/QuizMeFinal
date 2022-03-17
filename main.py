@@ -1,38 +1,30 @@
 import json
 import random
-from re import A
 from colorama import Fore, Back, Style
 import os
-from menu import Menu
+from prettytable import PrettyTable
+from storedata import Questions
 
+myTable = PrettyTable(['Reviewer'])
 
-question_dictionary = {}
-
-def save_the_info():
-    file_name = 'sets.json'
-    with open(file_name, 'a',) as f:
-        json.dump(question_dictionary, f, indent=2)
-        print(Fore.GREEN + "***All done! Questions and answers have been stored!***" + Style.RESET_ALL)
-        
-def store_questions_answers():
-    
-    prompt = Fore.YELLOW + "*****You will be asked to enter a question and an answer to be saved in the file*****" + Style.RESET_ALL
-    prompt += Fore.YELLOW + "\n*****Type 'quit' to stop program*****" + Style.RESET_ALL
-
-    print(prompt)
-
-    active = True
-
-    while active:
-        ask_question = input("Enter a question: ")
-        if ask_question == "quit":
-            save_the_info()
-            active = False  
-            main_menu()
+def showMenu():
+        myTable.add_rows(
+                [
+                    ["[A] Store questions and answers"],
+                    ["[B] Edit questions and answers" ],
+                    ["[C] Take the quiz " ],
+                    ["[D] See scores and progress" ],
+                    ["[E] Quit" ],
+                ]
+            )
+        print(myTable)
+        choice = input("Choose an option: ").lower()
+        if choice == "a":
+            Questions.prompt()
+            Questions.enterquestion()
         else:
-            provide_answer = input("Answer: ")
+            print("DONE")
 
-        question_dictionary[ask_question] = provide_answer
 
 def take_quiz():
     with open('sets.json') as json_file:
@@ -67,6 +59,4 @@ def enter_user_name():
     welcome_message = "Welcome {}!".format(capitalized_name)
     print(welcome_message)
     
-Menu.mainMenu()
-play_again()
-
+showMenu()
