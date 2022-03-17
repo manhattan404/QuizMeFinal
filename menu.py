@@ -15,4 +15,3 @@ def mainMenu():
 
     print(myTable)
 
-mainMenu()
