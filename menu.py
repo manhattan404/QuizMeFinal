@@ -1,9 +1,9 @@
 from prettytable import PrettyTable
+from storage import Storage
 
 myTable = PrettyTable(['Reviewer'])
 
 class Menu:
-
 
     def __init__(self, A, B, C, D, E):
         self.choiceA = A
@@ -24,3 +24,6 @@ class Menu:
         )
 
         print(myTable)
+        choice = input("Choose a letter: ")
+        if choice == "A":
+            Storage.promptQuestion()
