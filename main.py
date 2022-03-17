@@ -19,6 +19,7 @@ from colorama import Fore, Back, Style
 import os
 from main import main_menu
 from menu import mainMenu
+from question_model import Question
 
 #Maybe open the json file then close it back?
 
