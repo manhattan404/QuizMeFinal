@@ -4,6 +4,8 @@ from colorama import Fore, Back, Style
 import os
 from prettytable import PrettyTable
 from storedata import Questions
+import tqdm as tq
+import time
 
 myTable = PrettyTable(['Reviewer'])
 
@@ -21,7 +23,9 @@ def showMenu():
             ]
         )
         print(myTable)
+
         choice = input("Choose an option: ").lower()
+
         if choice == "a":
             Questions.prompt()
             Questions.enterquestion()

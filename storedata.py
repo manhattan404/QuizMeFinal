@@ -21,7 +21,7 @@ class Questions:
         while active:
             ask_question = input("Enter a question: ")
             if ask_question == "menu":
-                active = False
                 print("Going back to main menu...")
+                active = False
             else:
                 provide_answer = input("Answer: ")
