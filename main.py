@@ -7,23 +7,28 @@ from storedata import Questions
 
 myTable = PrettyTable(['Reviewer'])
 
+
 def showMenu():
+    active = True
+    while active:
         myTable.add_rows(
-                [
-                    ["[A] Store questions and answers"],
-                    ["[B] Edit questions and answers" ],
-                    ["[C] Take the quiz " ],
-                    ["[D] See scores and progress" ],
-                    ["[E] Quit" ],
-                ]
-            )
+            [
+                ["[A] Store questions and answers"],
+                ["[B] Edit questions and answers"],
+                ["[C] Take the quiz "],
+                ["[D] See scores and progress"],
+                ["[E] Quit"],
+            ]
+        )
         print(myTable)
         choice = input("Choose an option: ").lower()
         if choice == "a":
             Questions.prompt()
             Questions.enterquestion()
+        elif choice == "quit":
+            active = False
         else:
-            print("DONE")
+            print("GOOD BYE!")
 
 
 def take_quiz():
@@ -33,9 +38,9 @@ def take_quiz():
     score = 0
     items = list(question_dictionary.items())
     random.shuffle(items)
-    
+
     for q, a in items:
-        real_question = q 
+        real_question = q
         quote = ": "
         if input(Fore.YELLOW + real_question + quote + Style.RESET_ALL).lower() == a.lower():
             score += 1
@@ -46,17 +51,20 @@ def take_quiz():
     return score
     print("Your total score is {score}")
 
+
 def play_again():
-    prompt = input("Would you like to try again? [Y/N]")  
+    prompt = input("Would you like to try again? [Y/N]")
     if prompt == "Y":
         take_quiz()
     else:
-        exit() 
-    
+        exit()
+
+
 def enter_user_name():
     user_name = input("Please enter your name: ")
     capitalized_name = user_name.title()
     welcome_message = "Welcome {}!".format(capitalized_name)
     print(welcome_message)
-    
+
+
 showMenu()
