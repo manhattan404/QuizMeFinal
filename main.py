@@ -31,6 +31,7 @@ def showMenu():
             Questions.enterquestion()
         elif choice == "quit":
             active = False
+            print("Goodbye!")
         else:
             print("GOOD BYE!")
 
