@@ -1,4 +1,5 @@
 import json
+from multiprocessing.dummy import active_children
 import random
 from colorama import Fore, Back, Style
 import os
@@ -11,29 +12,26 @@ myTable = PrettyTable(['Reviewer'])
 
 
 def showMenu():
-    active = True
-    while active:
-        myTable.add_rows(
-            [
-                ["[A] Store questions and answers"],
-                ["[B] Edit questions and answers"],
-                ["[C] Take the quiz "],
-                ["[D] See scores and progress"],
-                ["[E] Quit"],
-            ]
-        )
-        print(myTable)
+    myTable.add_rows(
+        [
+            ["[A] Store questions and answers"],
+            ["[B] Edit questions and answers"],
+            ["[C] Take the quiz "],
+            ["[D] See scores and progress"],
+            ["[E] Quit"],
+        ]
+    )
+    print(myTable)
 
-        choice = input("Choose an option: ").lower()
 
-        if choice == "a":
-            Questions.prompt()
-            Questions.enterquestion()
-        elif choice == "quit":
-            active = False
-            print("Goodbye!")
-        else:
-            print("GOOD BYE!")
+def chooseOption():
+    choice = input("Choose an option: ").lower()
+
+    if choice == "a":
+        Questions.prompt()
+        Questions.enterquestion()
+    elif choice == "quit":
+        print("Goodbye!")
 
 
 def take_quiz():
@@ -72,4 +70,14 @@ def enter_user_name():
     print(welcome_message)
 
 
-showMenu()
+def menuLoop():
+    active = True
+    while active:
+        showMenu()
+        chooseOption()
+    else:
+        active = False
+        print("Goodbye")
+
+
+menuLoop()
