@@ -4,24 +4,10 @@ import random
 from colorama import Fore, Back, Style
 import os
 from prettytable import PrettyTable
+from menu import showMenu
 from storedata import Questions
 import tqdm as tq
 import time
-
-myTable = PrettyTable(['Reviewer'])
-
-
-def showMenu():
-    myTable.add_rows(
-        [
-            ["[A] Store questions and answers"],
-            ["[B] Edit questions and answers"],
-            ["[C] Take the quiz "],
-            ["[D] See scores and progress"],
-            ["[E] Quit"],
-        ]
-    )
-    print(myTable)
 
 
 def chooseOption():
@@ -80,4 +66,4 @@ def menuLoop():
         print("Goodbye")
 
 
-menuLoop()
+showMenu()
