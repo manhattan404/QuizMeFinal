@@ -4,20 +4,10 @@ import random
 from colorama import Fore, Back, Style
 import os
 from prettytable import PrettyTable
-from menu import showMenu
+from menu import showMenu, chooseOption
 from storedata import Questions
 import tqdm as tq
 import time
-
-
-def chooseOption():
-    choice = input("Choose an option: ").lower()
-
-    if choice == "a":
-        Questions.prompt()
-        Questions.enterquestion()
-    elif choice == "quit":
-        print("Goodbye!")
 
 
 def take_quiz():
@@ -67,3 +57,4 @@ def menuLoop():
 
 
 showMenu()
+chooseOption()
